@@ -1,0 +1,11 @@
+*.o
+build
+test
+start
+stop
+move
+.cproject
+.project
+*.swp
+*.so
+*.a
