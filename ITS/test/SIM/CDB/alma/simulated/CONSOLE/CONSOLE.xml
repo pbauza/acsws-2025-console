@@ -1,0 +1,22 @@
+<SimulatedComponent xmlns="urn:schemas-cosylab-com:SimulatedComponent:1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+    <pythonImports>
+import six
+from acstime import Duration
+    </pythonImports>
+
+    <initialize>
+setGlobalData("logger", parameters[0].getLogger())
+getGlobalData("logger").logInfo("Component initialized!")
+    </initialize>
+
+    <cleanUp>
+getGlobalData("logger").logInfo('Simulated component cleaning up')
+    </cleanUp>
+
+    <_corbaMethod Name="getCameraImage" Timeout="0">
+getGlobalData("logger").logInfo("'getCameraImage' called with params: " + str(parameters))
+return six.ensure_binary('randomstringforimage')
+    </_corbaMethod>
+
+</SimulatedComponent>

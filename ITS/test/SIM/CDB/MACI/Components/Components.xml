@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<Components xmlns="urn:schemas-cosylab-com:Components:1.0"
+            xmlns:cdb="urn:schemas-cosylab-com:CDB:1.0"
+            xmlns:baci="urn:schemas-cosylab-com:BACI:1.0"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+<!-- Simulated device components: -->
+    <e Name="TELESCOPE_CONTROL"
+       Code="Acssim.Servants.Simulator"
+       Type="IDL:acsws/TELESCOPE_MODULE/TelescopeControl:1.0"
+       Container="pySimContainer" ImplLang="py" />
+
+    <e Name="CAMERA"
+       Code="Acssim.Servants.Simulator"
+       Type="IDL:acsws/CAMERA_MODULE/Camera:1.0"
+       Container="pySimContainer" ImplLang="py" />
+<!-- END Simulated device components. -->
+
+
+<!-- Simulated high level components: -->
+    <e Name="TELESCOPE_S"
+       Code="Acssim.Servants.Simulator"
+       Type="IDL:acsws/TELESCOPE_MODULE/Telescope:1.0"
+       Container="pySimContainer" ImplLang="py" />
+
+    <e Name="DATABASE_S"
+       Code="Acssim.Servants.Simulator"
+       Type="IDL:acsws/DATABASE_MODULE/DataBase:1.0"
+       Container="pySimContainer" ImplLang="py" />
+
+    <e Name="INSTRUMENT_S"
+       Code="Acssim.Servants.Simulator"
+       Type="IDL:acsws/INSTRUMENT_MODULE/Instrument:1.0"
+       Container="pySimContainer" ImplLang="py" />
+
+    <e Name="CONSOLE_S"
+       Code="Acssim.Servants.Simulator"
+       Type="IDL:acsws/CONSOLE_MODULE/Console:1.0"
+       Container="pySimContainer" ImplLang="py" />
+
+    <e Name="SCHEDULER_S"
+       Code="Acssim.Servants.Simulator"
+       Type="IDL:acsws/SCHEDULER_MODULE/Scheduler:1.0"
+       Container="pySimContainer" ImplLang="py" />
+<!-- END Simulated high level components. -->
+
+<!-- Additional component configurations: -->
+<!-- END Additional component configurations. -->
+
+</Components>

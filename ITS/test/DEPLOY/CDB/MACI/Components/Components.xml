@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<Components xmlns="urn:schemas-cosylab-com:Components:1.0"
+            xmlns:cdb="urn:schemas-cosylab-com:CDB:1.0"
+            xmlns:baci="urn:schemas-cosylab-com:BACI:1.0"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+<!-- Low-level device components: -->
+    <e Name="TELESCOPE_CONTROL"
+       Code="MOUNT2"
+       Type="IDL:acsws/TELESCOPE_MODULE/TelescopeControl:1.0"
+       Container="hwContainer" ImplLang="cpp" KeepAliveTime="-1" Autostart="true"/>
+
+    <e Name="CAMERA"
+       Code="CameraImpl"
+       Type="IDL:acsws/CAMERA_MODULE/Camera:1.0"
+       Container="hwContainer" ImplLang="cpp" KeepAliveTime="-1" Autostart="true"/>
+<!-- END Low-level device components. -->
+
+<!-- High level components: -->
+    <e Name="INSTRUMENT"
+       Code="TBD"
+       Type="IDL:acsws/INSTRUMENT_MODULE/Instrument:1.0"
+       Container="javaContainer" ImplLang="java" />
+
+    <e Name="TBD"
+       Code=""
+       Type="IDL:acsws/TELESCOPE_MODULE/Telescope:1.0"
+       Container="pyContainer" ImplLang="py" />
+
+    <e Name="DATABASE"
+       Code="TBD"
+       Type="IDL:acsws/DATABASE_MODULE/DataBase:1.0"
+       Container="pyContainer" ImplLang="py" />
+
+    <e Name="CONSOLE"
+       Code="TBD"
+       Type="IDL:acsws/CONSOLE_MODULE/Console:1.0"
+       Container="pyContainer" ImplLang="py" />
+
+    <e Name="SCHEDULER"
+       Code="TBD"
+       Type="IDL:acsws/SCHEDULER_MODULE/Scheduler:1.0"
+       Container="cppContainer" ImplLang="cpp" />
+<!-- END High level components. -->
+
+<!-- Additional component configurations: -->
+<!-- END Additional component configurations. -->
+
+<!-- Simulated high level components: -->
+<!-- END Simulated high level components. -->
+
+</Components>
+
