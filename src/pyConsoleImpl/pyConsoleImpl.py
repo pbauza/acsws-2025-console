@@ -10,7 +10,7 @@ from Acspy.Servants.ContainerServices import ContainerServices
 # Basic component lifecycle (initialize, execute, cleanUp and aboutToAbort methods)
 from Acspy.Servants.ComponentLifecycle import ComponentLifecycle
   
-class ConsoleImpl(acsws__POA.Console, ACSComponent, ContainerServices, ComponentLifecycle):
+class pyConsoleImpl(acsws__POA.Console, ACSComponent, ContainerServices, ComponentLifecycle):
     def __init__(self):
         ACSComponent.__init__(self)
         ContainerServices.__init__(self)
