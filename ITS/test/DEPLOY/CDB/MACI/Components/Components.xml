@@ -33,7 +33,7 @@
        Container="pyContainer" ImplLang="py" />
 
     <e Name="CONSOLE"
-       Code="TBD"
+       Code="pyConsoleImpl.pyConsoleImpl"
        Type="IDL:acsws/CONSOLE_MODULE/Console:1.0"
        Container="pyContainer" ImplLang="py" />
 
