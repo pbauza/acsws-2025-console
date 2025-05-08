@@ -18,3 +18,23 @@ class pyConsoleImpl(CONSOLE_MODULE__POA.Console, ACSComponent, ContainerServices
     def printHello(self):
         print("Just printing 'Hello World!'")
         return "Hello World!"
+    def setMode(self):
+        pass
+    def getMode(self):
+        pass
+    def cameraOn(self):
+        pass
+    def cameraOff(self):
+        pass
+    def moveTelescope(self):
+        pass
+    def getTelescopePosition(self):
+        pass
+    def getCameraImage(self):
+        pass
+    def setRGB(self):
+        pass
+    def setPixelBias(self):
+        pass
+    def setResetLevel(self):
+        pass
