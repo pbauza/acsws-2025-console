@@ -1,14 +1,16 @@
 import asyncio
 from Acspy.Clients.SimpleClient import PySimpleClient
 
+from TYPES import Position, RGB, ImageType
+
 async def tui_console(console):
     print("Debug Console Started. Type commands to interact with sensors.")
     print("Commands:")
     print("  printHello")
-    print("  setMode <mode>")
+    print("  setMode <auto | manual>")
     print("  cameraOn")
     print("  cameraOff")
-    print("  moveTelescope <x> <y>")
+    print("  moveTelescope <az> <el>")
     print("  getTelescopePosition")
     print("  getCameraImage")
     print("  setRGB <r> <g> <b>")
@@ -30,16 +32,65 @@ async def tui_console(console):
                 "setmode",
                 "cameraon",
                 "cameraoff",
-                "movetelescope",
-                "gettelescopeposition",
                 "getcamerimage",
                 "setrgb",
                 "setpixelbias",
                 "setresetlevel",
+                "movetelescope",
+                "gettelescopeposition",
             ]:
                 match cmd[0].lower():
                     case "printhello":
                         print(console.printHello())
+                    case "setmode":
+                        if len(cmd) != 2 or cmd[1].lower() not in ["auto", "manual"]:
+                            print("Usage: setMode <auto | manual>")
+                            continue
+                        if cmd[1].lower() == "auto":
+                            console.setMode(True)
+                        else:
+                            console.setMode(False)
+                    case "cameraon":
+                        console.cameraOn()
+                    case "cameraoff":
+                        console.cameraOff()
+                    case "getcamerimage":
+                        if len(cmd) != 2:
+                            print("Usage: getCameraImage <exposure_time>")
+                            continue
+                        exposure_time = int(cmd[1])
+                        image = console.getCameraImage(exposure_time)
+                        print(f"Image received: {image}") # TODO: Handle image data
+                    case "setrgb":
+                        if len(cmd) != 4:
+                            print("Usage: setRGB <r> <g> <b>")
+                            continue
+                        r = int(cmd[1])
+                        g = int(cmd[2])
+                        b = int(cmd[3])
+                        console.setRGB(RGB(r, g, b))
+                    case "setpixelbias":
+                        if len(cmd) != 2:
+                            print("Usage: setPixelBias <bias>")
+                            continue
+                        bias = int(cmd[1])
+                        console.setPixelBias(bias)
+                    case "setresetlevel":
+                        if len(cmd) != 2:
+                            print("Usage: setResetLevel <level>")
+                            continue
+                        level = int(cmd[1])
+                        console.setResetLevel(level)
+                    case "movetelescope":
+                        if len(cmd) != 3:
+                            print("Usage: moveTelescope <az> <el>")
+                            continue
+                        az = float(cmd[1])
+                        el = float(cmd[2])
+                        console.moveTelescope(Position(az, el))
+                    case "gettelescopeposition":
+                        pos = console.getTelescopePosition()
+                        print(f"Telescope Position: Azimuth: {pos.az}, Elevation: {pos.el}")
                     case _:
                         print("Not implemented.")
             else:
