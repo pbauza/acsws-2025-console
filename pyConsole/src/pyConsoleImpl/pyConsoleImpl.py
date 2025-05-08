@@ -19,7 +19,6 @@ from SYSTEMErrImpl import (
     SystemInAutoModeExImpl, 
     CameraIsOffExImpl,
     PositionOutOfLimitsExImpl)
-
   
 class pyConsoleImpl(CONSOLE_MODULE__POA.Console, ACSComponent, ContainerServices, ComponentLifecycle):
     def __init__(self):
@@ -33,13 +32,24 @@ class pyConsoleImpl(CONSOLE_MODULE__POA.Console, ACSComponent, ContainerServices
         self.scheduler_client = self.client.getComponent("SCHEDULER")
         self.instrument_client = self.client.getComponent("INSTRUMENT")
         self.telescope_client = self.client.getComponent("TELESCOPE")
+    
+    def info(self, msg:str):
+        self._logger.info(msg)
+    def debug(self, msg:str):
+        self._logger.debug(msg)
+    def error(self, msg:str):
+        self._logger.error(msg)
+    def warning(self, msg:str):
+        self._logger.warning(msg)
+    def critical(self, msg:str):
+        self._logger.critical(msg)
 
     def printHello(self):
-        print("Just printing 'Hello World!'")
+        self.info("Just printing 'Hello World!'")
         return "Hello World!"
 
     def setMode(self, mode:bool):
-        print("Starting method: setMode")
+        self.debug("Starting method: setMode")
         if mode != self.auto_schedule:
             if mode:
                 self.scheduler_client.start()
@@ -50,28 +60,28 @@ class pyConsoleImpl(CONSOLE_MODULE__POA.Console, ACSComponent, ContainerServices
         self.auto_schedule = mode
                         
     def getMode(self):
-        print("Starting method: getMode")
+        self.debug("Starting method: getMode")
         if self.auto_schedule:
             return 'Automatic'
         else:
             return 'Manual'
 
     def cameraOn(self):
-        print("Starting method: cameraOn")
+        self.debug("Starting method: cameraOn")
         if self.auto_schedule:
             raise SystemInAutoModeExImpl
         self.is_camera_on = True
         self.instrument_client.cameraOn()
 
     def cameraOff(self):
-        print("Starting method: cameraOn")
+        self.debug("Starting method: cameraOn")
         if self.auto_schedule:
             raise SystemInAutoModeExImpl
         self.is_camera_on = False
         self.instrument_client.cameraOff()
 
     def getCameraImage(self, exposure_time:int):
-        print("Starting method: getCameraImage")
+        self.debug("Starting method: getCameraImage")
         if self.auto_schedule:
             raise SystemInAutoModeExImpl
         if not self.is_camera_on:
@@ -79,25 +89,25 @@ class pyConsoleImpl(CONSOLE_MODULE__POA.Console, ACSComponent, ContainerServices
         return self.instrument_client.takeImage(exposure_time)
 
     def setRGB(self, rgb:RGB):
-        print("Starting method: setRGB")
+        self.debug("Starting method: setRGB")
         if not self.is_camera_on:
             raise CameraIsOffExImpl
         self.instrument_client.setRGB(rgb)
 
     def setPixelBias(self, bias:int):
-        print("Starting method: setPixelBias")
+        self.debug("Starting method: setPixelBias")
         if not self.is_camera_on:
             raise CameraIsOffExImpl
         self.instrument_client.setPixelBias(bias)
 
     def setResetLevel(self, resetLevel:int):
-        print("Starting method: setResetLevel")
+        self.debug("Starting method: setResetLevel")
         if not self.is_camera_on:
             raise CameraIsOffExImpl
         self.instrument_client.setResetLevel(resetLevel)
     
     def moveTelescope(self, position:Position):
-        print("Starting method: moveTelescope")
+        self.debug("Starting method: moveTelescope")
         if self.auto_schedule:
             raise SystemInAutoModeExImpl
         if position.az < 0 or position.az > 360 or position.el < 0 or position.el > 90:
@@ -105,5 +115,5 @@ class pyConsoleImpl(CONSOLE_MODULE__POA.Console, ACSComponent, ContainerServices
         self.telescope_client.moveTo(position) # instead of moveTelescope
 
     def getTelescopePosition(self):
-        print("Starting method: getTelescopePosition")
+        self.debug("Starting method: getTelescopePosition")
         self.telescope_client.getCurrentPosition() # instead of getTelescopePosition
