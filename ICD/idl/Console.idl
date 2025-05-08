@@ -98,7 +98,7 @@ module CONSOLE_MODULE
 	 *
 	 *  @return Image from the camera
 	 */    
-	TYPES::ImageType getCameraImage()
+	TYPES::ImageType getCameraImage(in long exposureTime)
 		raises(SYSTEMErr::SystemInAutoModeEx, SYSTEMErr::CameraIsOffEx);
 
 	 /* Camera settings */
