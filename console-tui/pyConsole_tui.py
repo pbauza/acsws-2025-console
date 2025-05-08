@@ -115,6 +115,6 @@ if __name__ == "__main__":
     try:
         asyncio.run(debug_main())
     except KeyboardInterrupt:
-        print("Debug console terminated.")
+        print("TUI console terminated.")
     except Exception as e:
         print("Error:", e)
