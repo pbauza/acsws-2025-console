@@ -2,3 +2,4 @@ ICD/*
 !ICD/idl/Console.idl
 pyConsole/*
 !pyConsole/src/
+entrypoint.sh
