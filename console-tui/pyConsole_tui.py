@@ -68,6 +68,9 @@ async def tui_console(console):
                         r = int(cmd[1])
                         g = int(cmd[2])
                         b = int(cmd[3])
+                        if not (0 <= r <= 255 and 0 <= g <= 255 and 0 <= b <= 255):
+                            print("RGB values must be between 0 and 255.")
+                            continue
                         console.setRGB(RGB(r, g, b))
                     case "setpixelbias":
                         if len(cmd) != 2:
