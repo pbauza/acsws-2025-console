@@ -17,26 +17,58 @@ class pyConsoleImpl(CONSOLE_MODULE__POA.Console, ACSComponent, ContainerServices
         ACSComponent.__init__(self)
         ContainerServices.__init__(self)
         self._logger = self.getLogger()
+
     def printHello(self):
         print("Just printing 'Hello World!'")
         return "Hello World!"
+
     def setMode(self, mode:bool):
-        pass
+        print("Starting method: setMode")
+        #Code
+        return "setMode method ended"
+
     def getMode(self):
-        pass
+        print("Starting method: getMode")
+        #Code
+        return "getMode method ended"
+
     def cameraOn(self):
-        pass
+        print("Starting method: cameraOn")
+        #Code
+        return "cameraOn method ended"
+
     def cameraOff(self):
-        pass
+        print("Starting method: cameraOff")
+        #Code
+        return "cameraOff method ended"
+
     def moveTelescope(self, position:Position):
-        pass
+        print("Starting method: moveTelescope")
+        #Code
+        return "moveTelescope method ended"
+
     def getTelescopePosition(self):
-        pass
+        print("Starting method: getTelescopePosition")
+        #Code
+        return "getTelescopePosition method ended"
+
     def getCameraImage(self):
-        pass
+        print("Starting method: getCameraImage")
+        #Code
+        return "getCameraImage method ended"
+
     def setRGB(self, rgb:RGB):
-        pass
+        print("Starting method: setRGB")
+        #Code
+        return "setRGB method ended"
+
     def setPixelBias(self, bias:int):
-        pass
+        print("Starting method: setPixelBias")
+        #Code
+        return "setPixelBias method ended"
+
     def setResetLevel(self, resetLevel:int):
-        pass
+        print("Starting method: setResetLevel")
+        #Code
+        return "ssetResetLevel method ended"
+
