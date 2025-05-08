@@ -1,0 +1,5 @@
+services:
+  acs:
+    image: acscommunity/acsdev:stream9.2025apr
+    volumes:
+      - .:/home/almamgr/acsws-2025
