@@ -1,7 +1,7 @@
 # Client stubs and definitions, such as structs, enums, etc.
-import acsws
+import CONSOLE_MODULE
 # Skeleton infrastructure for server implementation
-import acsws__POA
+import CONSOLE_MODULE__POA
   
 # Base component implementation
 from Acspy.Servants.ACSComponent import ACSComponent
@@ -10,7 +10,7 @@ from Acspy.Servants.ContainerServices import ContainerServices
 # Basic component lifecycle (initialize, execute, cleanUp and aboutToAbort methods)
 from Acspy.Servants.ComponentLifecycle import ComponentLifecycle
   
-class pyConsoleImpl(acsws__POA.Console, ACSComponent, ContainerServices, ComponentLifecycle):
+class pyConsoleImpl(CONSOLE_MODULE__POA.Console, ACSComponent, ContainerServices, ComponentLifecycle):
     def __init__(self):
         ACSComponent.__init__(self)
         ContainerServices.__init__(self)
