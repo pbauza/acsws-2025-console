@@ -11,12 +11,23 @@ from Acspy.Servants.ContainerServices import ContainerServices
 from Acspy.Servants.ComponentLifecycle import ComponentLifecycle
 
 from TYPES import Position, RGB, ImageType
+
+from Acspy.Clients.SimpleClient import PySimpleClient
+
   
 class pyConsoleImpl(CONSOLE_MODULE__POA.Console, ACSComponent, ContainerServices, ComponentLifecycle):
     def __init__(self):
         ACSComponent.__init__(self)
         ContainerServices.__init__(self)
         self._logger = self.getLogger()
+        self.client = PySimpleClient()
+        self.auto_schedule = False
+    
+    def getComponent(self, componentName:str):
+        return self.client.getComponent(componentName)
+    
+    def getScheduler(self):
+        return self.getComponent("SCHEDULER")
 
     def printHello(self):
         print("Just printing 'Hello World!'")
@@ -24,13 +35,20 @@ class pyConsoleImpl(CONSOLE_MODULE__POA.Console, ACSComponent, ContainerServices
 
     def setMode(self, mode:bool):
         print("Starting method: setMode")
-        #Code
-        return "setMode method ended"
-
+        scheduler = self.getScheduler()
+        if mode != self.auto_schedule:
+            if mode:
+                scheduler.start()
+            else:
+                scheduler.stop()
+            self.auto_schedule = mode
+                        
     def getMode(self):
         print("Starting method: getMode")
-        #Code
-        return "getMode method ended"
+        if self.auto_schedule:
+            return 'Automatic'
+        else:
+            return 'Manual'
 
     def cameraOn(self):
         print("Starting method: cameraOn")
