@@ -9,6 +9,8 @@ from Acspy.Servants.ACSComponent import ACSComponent
 from Acspy.Servants.ContainerServices import ContainerServices
 # Basic component lifecycle (initialize, execute, cleanUp and aboutToAbort methods)
 from Acspy.Servants.ComponentLifecycle import ComponentLifecycle
+
+from TYPES import Position, RGB, ImageType
   
 class pyConsoleImpl(CONSOLE_MODULE__POA.Console, ACSComponent, ContainerServices, ComponentLifecycle):
     def __init__(self):
@@ -18,7 +20,7 @@ class pyConsoleImpl(CONSOLE_MODULE__POA.Console, ACSComponent, ContainerServices
     def printHello(self):
         print("Just printing 'Hello World!'")
         return "Hello World!"
-    def setMode(self):
+    def setMode(self, mode:bool):
         pass
     def getMode(self):
         pass
@@ -26,15 +28,15 @@ class pyConsoleImpl(CONSOLE_MODULE__POA.Console, ACSComponent, ContainerServices
         pass
     def cameraOff(self):
         pass
-    def moveTelescope(self):
+    def moveTelescope(self, position:Position):
         pass
     def getTelescopePosition(self):
         pass
     def getCameraImage(self):
         pass
-    def setRGB(self):
+    def setRGB(self, rgb:RGB):
         pass
-    def setPixelBias(self):
+    def setPixelBias(self, bias:int):
         pass
-    def setResetLevel(self):
+    def setResetLevel(self, resetLevel:int):
         pass
