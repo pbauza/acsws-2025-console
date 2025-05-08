@@ -49,6 +49,9 @@ module CONSOLE_MODULE
 	 */
 	void setMode(in boolean mode)
 		raises(SYSTEMErr::AlreadyInAutomaticEx);
+
+	// TODO: delete this:
+	string printHello();
 	
 	/**
 	 * Get the current operator's mode. 
