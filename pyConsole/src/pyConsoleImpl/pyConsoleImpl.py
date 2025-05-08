@@ -22,12 +22,10 @@ class pyConsoleImpl(CONSOLE_MODULE__POA.Console, ACSComponent, ContainerServices
         self._logger = self.getLogger()
         self.client = PySimpleClient()
         self.auto_schedule = False
-    
-    def getComponent(self, componentName:str):
-        return self.client.getComponent(componentName)
-    
-    def getScheduler(self):
-        return self.getComponent("SCHEDULER")
+
+        self.scheduler_client = self.client.getComponent("SCHEDULER")
+        self.instrument_client = self.client.getComponent("INSTRUMENT")
+        self.telescope_client = self.client.getComponent("TELESCOPE")
 
     def printHello(self):
         print("Just printing 'Hello World!'")
@@ -35,12 +33,11 @@ class pyConsoleImpl(CONSOLE_MODULE__POA.Console, ACSComponent, ContainerServices
 
     def setMode(self, mode:bool):
         print("Starting method: setMode")
-        scheduler = self.getScheduler()
         if mode != self.auto_schedule:
             if mode:
-                scheduler.start()
+                self.scheduler_client.start()
             else:
-                scheduler.stop()
+                self.scheduler_client.stop()
             self.auto_schedule = mode
                         
     def getMode(self):
@@ -52,41 +49,32 @@ class pyConsoleImpl(CONSOLE_MODULE__POA.Console, ACSComponent, ContainerServices
 
     def cameraOn(self):
         print("Starting method: cameraOn")
-        #Code
-        return "cameraOn method ended"
+        self.instrument_client.cameraOn()
 
     def cameraOff(self):
-        print("Starting method: cameraOff")
-        #Code
-        return "cameraOff method ended"
+        print("Starting method: cameraOn")
+        self.instrument_client.cameraOff()
 
-    def moveTelescope(self, position:Position):
-        print("Starting method: moveTelescope")
-        #Code
-        return "moveTelescope method ended"
-
-    def getTelescopePosition(self):
-        print("Starting method: getTelescopePosition")
-        #Code
-        return "getTelescopePosition method ended"
-
-    def getCameraImage(self):
+    def getCameraImage(self, exposure_time:int):
         print("Starting method: getCameraImage")
-        #Code
-        return "getCameraImage method ended"
+        return self.instrument_client.takeImage(exposure_time)
 
     def setRGB(self, rgb:RGB):
         print("Starting method: setRGB")
-        #Code
-        return "setRGB method ended"
+        self.instrument_client.setRGB(rgb)
 
     def setPixelBias(self, bias:int):
         print("Starting method: setPixelBias")
-        #Code
-        return "setPixelBias method ended"
+        self.instrument_client.setPixelBias(bias)
 
     def setResetLevel(self, resetLevel:int):
         print("Starting method: setResetLevel")
-        #Code
-        return "ssetResetLevel method ended"
+        self.instrument_client.setResetLevel(resetLevel)
+    
+    def moveTelescope(self, position:Position):
+        print("Starting method: moveTelescope")
+        self.telescope_client.moveTo(position) # instead of moveTelescope
 
+    def getTelescopePosition(self):
+        print("Starting method: getTelescopePosition")
+        self.telescope_client.getCurrentPosition() # instead of getTelescopePosition
