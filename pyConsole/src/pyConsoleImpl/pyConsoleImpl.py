@@ -14,6 +14,12 @@ from TYPES import Position, RGB, ImageType
 
 from Acspy.Clients.SimpleClient import PySimpleClient
 
+from SYSTEMErrImpl import (
+    AlreadyInAutomaticExImpl, 
+    SystemInAutoModeExImpl, 
+    CameraIsOffExImpl,
+    PositionOutOfLimitsExImpl)
+
   
 class pyConsoleImpl(CONSOLE_MODULE__POA.Console, ACSComponent, ContainerServices, ComponentLifecycle):
     def __init__(self):
@@ -22,6 +28,7 @@ class pyConsoleImpl(CONSOLE_MODULE__POA.Console, ACSComponent, ContainerServices
         self._logger = self.getLogger()
         self.client = PySimpleClient()
         self.auto_schedule = False
+        self.is_camera_on = False
 
         self.scheduler_client = self.client.getComponent("SCHEDULER")
         self.instrument_client = self.client.getComponent("INSTRUMENT")
@@ -38,7 +45,9 @@ class pyConsoleImpl(CONSOLE_MODULE__POA.Console, ACSComponent, ContainerServices
                 self.scheduler_client.start()
             else:
                 self.scheduler_client.stop()
-            self.auto_schedule = mode
+        if mode and self.auto_schedule:
+            raise AlreadyInAutomaticExImpl
+        self.auto_schedule = mode
                         
     def getMode(self):
         print("Starting method: getMode")
@@ -49,30 +58,50 @@ class pyConsoleImpl(CONSOLE_MODULE__POA.Console, ACSComponent, ContainerServices
 
     def cameraOn(self):
         print("Starting method: cameraOn")
+        if self.auto_schedule:
+            raise SystemInAutoModeExImpl
+        self.is_camera_on = True
         self.instrument_client.cameraOn()
 
     def cameraOff(self):
         print("Starting method: cameraOn")
+        if self.auto_schedule:
+            raise SystemInAutoModeExImpl
+        self.is_camera_on = False
         self.instrument_client.cameraOff()
 
     def getCameraImage(self, exposure_time:int):
         print("Starting method: getCameraImage")
+        if self.auto_schedule:
+            raise SystemInAutoModeExImpl
+        if not self.is_camera_on:
+            raise CameraIsOffExImpl
         return self.instrument_client.takeImage(exposure_time)
 
     def setRGB(self, rgb:RGB):
         print("Starting method: setRGB")
+        if not self.is_camera_on:
+            raise CameraIsOffExImpl
         self.instrument_client.setRGB(rgb)
 
     def setPixelBias(self, bias:int):
         print("Starting method: setPixelBias")
+        if not self.is_camera_on:
+            raise CameraIsOffExImpl
         self.instrument_client.setPixelBias(bias)
 
     def setResetLevel(self, resetLevel:int):
         print("Starting method: setResetLevel")
+        if not self.is_camera_on:
+            raise CameraIsOffExImpl
         self.instrument_client.setResetLevel(resetLevel)
     
     def moveTelescope(self, position:Position):
         print("Starting method: moveTelescope")
+        if self.auto_schedule:
+            raise SystemInAutoModeExImpl
+        if position.az < 0 or position.az > 360 or position.el < 0 or position.el > 90:
+            raise PositionOutOfLimitsExImpl
         self.telescope_client.moveTo(position) # instead of moveTelescope
 
     def getTelescopePosition(self):
