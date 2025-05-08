@@ -31,7 +31,7 @@
  * SYSTEMErr Console IDL file
  */
 
-module CONSOLE_MODULE 
+module CONSOLE_MODULE
 {
 	
 	/** @interface Console
