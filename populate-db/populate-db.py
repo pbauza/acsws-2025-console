@@ -60,7 +60,11 @@ def get_target_coordinates(name):
     
     print(f"Object: {name}, AZ: {altaz.az.deg}, EL: {altaz.alt.deg}")
 
-    return Position(altaz.alt.deg, altaz.az.deg)
+    if altaz.alt.deg > 20:
+        print(f"Object {name} is visible.")
+        return Position(altaz.alt.deg, altaz.az.deg)
+    else:
+        return None
 
 # def generateProposal(n_proposals=10, last_proposal_id=0):
 #     """
@@ -103,7 +107,12 @@ def generateTargets(n_targets=10, last_target_id=0):
         name = random.choice(sources)
         sources.remove(name)
 
-        target_id = last_target_id + i + 1
+        target_id = int(name.split(" ")[-1])
+        print(target_id)
+        coordinates = get_target_coordinates(name)
+        if coordinates is None:
+            print(f"Target {name} is not visible.")
+            continue
         target = Target(
             tid = target_id,
             coordinates = get_target_coordinates(name),
@@ -118,6 +127,6 @@ def generateTargets(n_targets=10, last_target_id=0):
 # proposal = proposal_list[-1]
 # proposal_id = proposal.pid
 # add 10 new proposals
-for i in range(10):
+for i in range(2):
     target_list = generateTargets(3)
     db.storeProposal(target_list)
