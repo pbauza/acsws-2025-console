@@ -12,8 +12,6 @@ from Acspy.Servants.ComponentLifecycle import ComponentLifecycle
 
 from TYPES import Position, RGB, ImageType
 
-from Acspy.Clients.SimpleClient import PySimpleClient
-
 from SYSTEMErrImpl import (
     AlreadyInAutomaticExImpl, 
     SystemInAutoModeExImpl, 
@@ -25,13 +23,13 @@ class pyConsoleImpl(CONSOLE_MODULE__POA.Console, ACSComponent, ContainerServices
         ACSComponent.__init__(self)
         ContainerServices.__init__(self)
         self._logger = self.getLogger()
-        self.client = PySimpleClient()
+
         self.auto_schedule = False
         self.is_camera_on = False
 
-        self.scheduler_client = self.client.getComponent("SCHEDULER")
-        self.instrument_client = self.client.getComponent("INSTRUMENT")
-        self.telescope_client = self.client.getComponent("TELESCOPE")
+        self.scheduler_client = self.getComponent("SCHEDULER_S")
+        self.instrument_client = self.getComponent("INSTRUMENT_S")
+        self.telescope_client = self.getComponent("TELESCOPE_S")
     
     def info(self, msg:str):
         self._logger.info(msg)
