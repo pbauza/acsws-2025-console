@@ -37,6 +37,11 @@
        Code="Acssim.Servants.Simulator"
        Type="IDL:acsws/CONSOLE_MODULE/Console:1.0"
        Container="pySimContainer" ImplLang="py" />
+      
+   <e Name="CONSOLE"
+       Code="pyConsoleImpl.pyConsoleImpl"
+       Type="IDL:acsws/CONSOLE_MODULE/Console:1.0"
+       Container="pyContainer" ImplLang="py" />
 
     <e Name="SCHEDULER_S"
        Code="Acssim.Servants.Simulator"
