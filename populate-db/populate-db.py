@@ -98,7 +98,8 @@ def addProposals(n_proposals=1, db=None):
         print(f"Adding proposal {i+1}/{n_proposals}...")
         target_list = generateTargets(n_targets=random.randint(4, 10))
         if target_list:
-            db.storeProposal(target_list)
+            pid = db.storeProposal(target_list)
+            db.setProposalStatus(pid, 0)
         else:
             print("No visible targets found.")
     
@@ -109,7 +110,7 @@ def main(n_proposals=1):
     print("Starting main function...")
     # connect to the database
     client = PySimpleClient()
-    db = client.getComponent("DATABASE")
+    db = client.getComponent("DATABASE_S")
     
     # add proposals
     addProposals(n_proposals, db)
