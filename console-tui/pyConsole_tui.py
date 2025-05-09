@@ -2,10 +2,9 @@ import asyncio
 from Acspy.Clients.SimpleClient import PySimpleClient
 
 from matplotlib import pyplot as plt
-from PIL import Image
-import io
+import os
 
-from TYPES import Position, RGB, ImageType
+from TYPES import Position, RGB, ImageType 
 
 async def tui_console(console):
     print("Debug Console Started. Type commands to interact with sensors.")
@@ -20,6 +19,7 @@ async def tui_console(console):
     print("  setRGB <r> <g> <b>")
     print("  setPixelBias <bias>")
     print("  setResetLevel <level>")
+    print("  addProposals <number of proposals>")
     print("  exit")
     while True:
         command = await asyncio.to_thread(input, "Enter TUI command: ")
@@ -42,6 +42,7 @@ async def tui_console(console):
                 "setresetlevel",
                 "movetelescope",
                 "gettelescopeposition",
+                "addproposals",
             ]:
                 match cmd[0].lower():
                     case "printhello":
@@ -101,6 +102,15 @@ async def tui_console(console):
                         print("Getting telescope position...")
                         pos = console.getTelescopePosition()
                         print(f"Telescope Position: Azimuth: {pos.az}, Elevation: {pos.el}")
+                    case "addproposals":
+                        if len(cmd) != 2:
+                            print("Usage: addProposals <number of proposals>")
+                            continue
+                        n_proposals = int(cmd[1])
+                        # Assuming a function to generate proposals
+                        os.system("python /home/almamgr/acsws-2025/populate-db/populate-db.py -n " + str(n_proposals))
+                        
+                        print(f"Generated {n_proposals} proposals.")
                     case _:
                         print("Not implemented.")
             else:
