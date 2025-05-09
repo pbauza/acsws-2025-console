@@ -27,9 +27,9 @@ class pyConsoleImpl(CONSOLE_MODULE__POA.Console, ACSComponent, ContainerServices
         self.auto_schedule = False
         self.is_camera_on = False
 
-        self.scheduler_client = self.getComponent("SCHEDULER_S")
-        self.instrument_client = self.getComponent("INSTRUMENT_S")
-        self.telescope_client = self.getComponent("TELESCOPE_S")
+        self.scheduler_client = self.getComponent("SCHEDULER")
+        self.instrument_client = self.getComponent("INSTRUMENT")
+        self.telescope_client = self.getComponent("TELESCOPE")
     
     def info(self, msg:str):
         self._logger.info(msg)
