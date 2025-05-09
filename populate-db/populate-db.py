@@ -110,7 +110,7 @@ def main(n_proposals=1):
     print("Starting main function...")
     # connect to the database
     client = PySimpleClient()
-    db = client.getComponent("DATABASE_S")
+    db = client.getComponent("DATABASE")
     
     # add proposals
     addProposals(n_proposals, db)
