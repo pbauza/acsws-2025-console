@@ -44,12 +44,14 @@ async def tui_console(console):
                         print(console.printHello())
                     case "setmode":
                         if len(cmd) != 2 or cmd[1].lower() not in ["auto", "manual"]:
-                            print("Usage: setMode <auto | manual>")
+                            print("Usage: setmode <auto | manual>")
                             continue
                         if cmd[1].lower() == "auto":
                             console.setMode(True)
+                            print("Mode set to Automatic.")
                         else:
                             console.setMode(False)
+                            print("Mode set to Manual.")
                     case "cameraon":
                         console.cameraOn()
                     case "cameraoff":
@@ -92,6 +94,7 @@ async def tui_console(console):
                         el = float(cmd[2])
                         console.moveTelescope(Position(az, el))
                     case "gettelescopeposition":
+                        print("Getting telescope position...")
                         pos = console.getTelescopePosition()
                         print(f"Telescope Position: Azimuth: {pos.az}, Elevation: {pos.el}")
                     case _:
