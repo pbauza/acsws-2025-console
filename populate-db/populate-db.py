@@ -1,9 +1,6 @@
 import random
 from Acspy.Clients.SimpleClient import PySimpleClient
 
-client = PySimpleClient()
-db = client.getComponent("DATABASE_S")
-
 from TYPES import (
     Target,
     TargetList,
@@ -66,35 +63,6 @@ def get_target_coordinates(name):
     else:
         return None
 
-# def generateProposal(n_proposals=10, last_proposal_id=0):
-#     """
-#     Generate a list of proposals.
-#     """
-#     proposals = []
-#     sources = get_visible_sources()
-#     for i in range(n_proposals):
-#         proposal_id = last_proposal_id + i + 1
-#         targets = []
-#         for j in range(random.randint(4, 10)):
-#             # random select a unique source from the sources list
-#             name = random.choice(sources)
-#             sources.remove(name)
-
-#             target_id = proposal_id * 1000 + j
-#             target = Target(
-#                 tid = target_id,
-#                 coordinates = get_target_coordinates(name),
-#                 expTime = random.randint(1, 10)
-#             )
-#             targets.append(target)
-#         proposal = Proposal(
-#             pid=proposal_id,
-#             targets=TargetList(targets),
-#             status=0
-#         )
-#         proposals.append(proposal)
-#     return ProposalList(proposals)
-
 def generateTargets(n_targets=10, last_target_id=0):
     """
     Generate a list of targets.
@@ -122,11 +90,33 @@ def generateTargets(n_targets=10, last_target_id=0):
         time.sleep(1)
     return targets
 
-# get the latest proposal
-# proposal_list = db.getProposals()
-# proposal = proposal_list[-1]
-# proposal_id = proposal.pid
-# add 10 new proposals
-for i in range(2):
-    target_list = generateTargets(3)
-    db.storeProposal(target_list)
+def addProposals(n_proposals=1, db=None):
+    """
+    Add proposals to the database.
+    """
+    for i in range(n_proposals):
+        print(f"Adding proposal {i+1}/{n_proposals}...")
+        target_list = generateTargets(3)
+        db.storeProposal(target_list)
+    
+def main(n_proposals=1):
+    """
+    Main function to add proposals to the database.
+    """
+    print("Starting main function...")
+    # connect to the database
+    client = PySimpleClient()
+    db = client.getComponent("DATABASE_S")
+    
+    # add proposals
+    addProposals(n_proposals, db)
+
+# add main
+if __name__ == "__main__":
+    # add command line argument for number of proposals
+    import argparse
+    parser = argparse.ArgumentParser(description="Add proposals to the database.")
+    parser.add_argument("-n", "--number", type=int, default=1, help="Number of proposals to add.")
+    args = parser.parse_args()
+    
+    main(args.number)
