@@ -1,10 +1,24 @@
 import asyncio
 from Acspy.Clients.SimpleClient import PySimpleClient
 
-from matplotlib import pyplot as plt
+import matplotlib.pyplot as plt
+import numpy as np
 import os
 
 from TYPES import Position, RGB, ImageType 
+
+def showImage(img_data: ImageType):
+
+    mult = 5
+    width = int(1920 / mult)
+    height = int(1080 / mult)
+
+    img = np.frombuffer(img_data, dtype=np.uint8).reshape((height, width))
+
+    plt.figure(figsize=(8, 8))
+    plt.imshow(img, origin='lower')
+    plt.colorbar()
+    plt.show()
 
 async def tui_console(console):
     print("Debug Console Started. Type commands to interact with sensors.")
@@ -36,7 +50,7 @@ async def tui_console(console):
                 "setmode",
                 "cameraon",
                 "cameraoff",
-                "getcamerimage",
+                "getcameraimage",
                 "setrgb",
                 "setpixelbias",
                 "setresetlevel",
@@ -61,13 +75,17 @@ async def tui_console(console):
                         console.cameraOn()
                     case "cameraoff":
                         console.cameraOff()
-                    case "getcamerimage":
+                    case "getcameraimage":
                         if len(cmd) != 2:
                             print("Usage: getCameraImage <exposure_time>")
                             continue
                         exposure_time = int(cmd[1])
                         image = console.getCameraImage(exposure_time)
+                        if image is None:
+                            print("No image received.")
+                            continue
                         print(f"Image received: {image}") # TODO: Handle image data
+                        showImage(image)
                     case "setrgb":
                         if len(cmd) != 4:
                             print("Usage: setRGB <r> <g> <b>")
