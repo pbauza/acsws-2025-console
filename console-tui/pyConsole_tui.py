@@ -76,11 +76,10 @@ async def tui_console(console):
                     case "cameraoff":
                         console.cameraOff()
                     case "getcameraimage":
-                        if len(cmd) != 2:
-                            print("Usage: getCameraImage <exposure_time>")
+                        if len(cmd) != 1:
+                            print("Usage: getCameraImage")
                             continue
-                        exposure_time = int(cmd[1])
-                        image = console.getCameraImage(exposure_time)
+                        image = console.getCameraImage()
                         if image is None:
                             print("No image received.")
                             continue
