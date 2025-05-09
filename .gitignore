@@ -1,4 +1,5 @@
 ICD/*
 !ICD/idl/Console.idl
+!ICD/src/Makefile
 pyConsole/*
 !pyConsole/src/
