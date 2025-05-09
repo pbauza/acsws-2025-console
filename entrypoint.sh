@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # Set the CDB path
-echo "ACS_CDB=/home/almamgr/acsws-2025/ITS/test/DEPLOY" >> /alma/ACS-2025APR/ACSSW/config/.acs/.bash_profile.acs
+#echo "ACS_CDB=/home/almamgr/acsws-2025/ITS/test/DEPLOY" >> /alma/ACS-2025APR/ACSSW/config/.acs/.bash_profile.acs
+echo "ACS_CDB=/home/almamgr/acsws-2025/ITS/test/SIM" >> /alma/ACS-2025APR/ACSSW/config/.acs/.bash_profile.acs
 source /alma/ACS-2025APR/ACSSW/config/.acs/.bash_profile.acs
 cd /home/almamgr/acsws-2025/ICD/src 
 make clean all install
@@ -25,8 +26,10 @@ while [ $(acsStatus 2>/dev/null | grep -e "Manager process ID" -e "Naming servic
 done
 
 if [ $acs_running -eq 1 ]; then 
+    sleep 20
     echo "ACS is now in a normal running state, starting ACS containers"
-    acsStartContainer --py pyContainer
+    acsStartContainer --py pyContainer 2>&1 | tee -a "/home/almamgr/acsws-2025/logs/pycontainer.log" &
+    acsStartContainer --py pySimContainer 2>&1 | tee -a "/home/almamgr/acsws-2025/logs/pysimcontainer.log" &
     sleep 5
 else
     echo "ACS seems not to be running, skipping starting of all ACS containers!"
