@@ -1,0 +1,127 @@
+2025-05-09T08:00:49.460 INFO [acsStartContainer] Running the container with these arguments: 'ACSStartContainerPy pyContainer -ORBendPoint giop:tcp:172.20.0.2:4002 -m corbaloc::172.20.0.2:3000/Manager'
+ContainerStatusMsg: Startup begins
+2025-05-09T08:00:49.664 AlarmSystemInterfaceFactory logDebug - Using ACS alarm system
+ContainerStatusMsg: ORB initialization begins
+ContainerStatusMsg: ORB initialization ends
+ContainerStatusMsg: Manager access initialization begins
+ContainerStatusMsg: Manager access initialization ends
+ContainerStatusMsg: Automatic component loading begins
+2025-05-09T08:00:49.679 pyContainer logInfo - Info message from the manager: Startup statistics: 0 components queued to be activated.
+2025-05-09T08:00:49.683 pyContainer logInfo - Info message from the manager: Startup statistics: 0 of 0 components activated.
+ContainerStatusMsg: Automatic component loading ends
+ContainerStatusMsg: Ready
+2025-05-09T08:00:49.732 pyContainer logAlert - The 'baci' Python script specified by this container's CDB Autoload element cannot be found!
+2025-05-09T08:00:49.766 pyContainer logInfo - Container pyContainer waiting for requests
+2025-05-09T08:00:49.767 pyContainer logInfo - Container pyContainer used libraries from /alma/ACS-2025APR/ACSSW/lib/python3.12/site-packages:
+ContainerStatusMsg: Startup ends
+2025-05-09T08:02:10.717 pyContainer logDelouse - Starting async activation of CONSOLE(type IDL:acsws/CONSOLE_MODULE/Console:1.0)
+2025-05-09T08:02:10.718 pyContainer logDebug - Activating CONSOLE (type IDL:acsws/CONSOLE_MODULE/Console:1.0)
+2025-05-09T08:02:10.719 pyContainer logDelouse - The container is asking the clearance to activate CONSOLE
+2025-05-09T08:02:10.720 pyContainer logDelouse - The container is not dealing with CONSOLE: the operation can go ahead
+2025-05-09T08:02:10.720 pyContainer logDelouse - The container has been cleared to activate CONSOLE
+2025-05-09T08:02:10.729 loggingts -- Successfully loaded component code. [ logName=LOG_CompAct_Loading_OK TimeMillis=7 CompName=CONSOLE ]
+2025-05-09T08:02:10.857 loggingts -- Successfully instantiated component. [ logName=LOG_CompAct_Instance_OK TimeMillis=127 CompName=CONSOLE ]
+2025-05-09T08:02:10.858 loggingts -- Successfully activated component with Corba. [ logName=LOG_CompAct_Corba_OK TimeMillis=0 CompName=CONSOLE ]
+2025-05-09T08:02:10.858 loggingts -- Successfully initialized component. [ logName=LOG_CompAct_Init_OK TimeMillis=0 CompName=CONSOLE ]
+2025-05-09T08:02:10.859 pyContainer logInfo - Activated component: CONSOLE
+2025-05-09T08:02:10.868 pyContainer logInfo - Component 'CONSOLE' has KeepAliveTime '0'.
+2025-05-09T08:02:10.869 pyContainer logDelouse - The container terminated the activation of CONSOLE: awakening waiting threads
+2025-05-09T08:02:10.870 pyContainer logDelouse - The container terminated dealing with CONSOLE
+2025-05-09T08:02:10.871 pyContainer logDelouse - Calling maci::CBComponentInfo::done with descOut.id_tag = 1 for 'CONSOLE'
+2025-05-09T08:02:10.874 pyContainer logDelouse - Call to maci::CBComponentInfo::done with descOut.id_tag = 1 for 'CONSOLE' completed
+2025-05-09T08:02:13.714 CONSOLE logInfo - Just printing 'Hello World!'
+2025-05-09T08:02:29.911 CONSOLE logDebug - Starting method: setMode
+2025-05-09T08:02:36.089 CONSOLE logDebug - Starting method: setMode
+2025-05-09T08:03:47.442 CONSOLE logDebug - Starting method: setMode
+2025-05-09T08:03:50.885 CONSOLE logDebug - Starting method: setMode
+2025-05-09T08:03:57.191 CONSOLE logDebug - Starting method: setMode
+2025-05-09T08:04:21.143 CONSOLE logDebug - Starting method: setMode
+2025-05-09T08:04:28.477 CONSOLE logDebug - Starting method: setMode
+2025-05-09T08:04:30.964 CONSOLE logDebug - Starting method: setMode
+2025-05-09T08:07:19.483 CONSOLE logInfo - Just printing 'Hello World!'
+2025-05-09T08:07:29.977 CONSOLE logDebug - Starting method: moveTelescope
+2025-05-09T08:07:36.847 CONSOLE logDebug - Starting method: setMode
+2025-05-09T08:07:42.993 CONSOLE logDebug - Starting method: moveTelescope
+2025-05-09T08:07:49.736 CONSOLE logDebug - Starting method: getTelescopePosition
+2025-05-09T08:07:57.742 CONSOLE logDebug - Starting method: getTelescopePosition
+2025-05-09T08:09:17.681 CONSOLE logDebug - Starting method: getTelescopePosition
+2025-05-09T08:10:05.933 pyContainer logDelouse - The container is asking the clearance to deactivate CONSOLE
+2025-05-09T08:10:05.933 pyContainer logDelouse - The container is not dealing with CONSOLE: the operation can go ahead
+2025-05-09T08:10:05.934 pyContainer logDelouse - The container has been cleared to activate CONSOLE
+2025-05-09T08:10:05.934 pyContainer logInfo - Deactivating component: CONSOLE
+2025-05-09T08:10:05.935 pyContainer logDelouse - The container terminated the deactivation of CONSOLE: awakening waiting threads
+2025-05-09T08:10:05.935 pyContainer logDelouse - The container terminated dealing with CONSOLE
+2025-05-09T08:10:06.818 Python Client: initialized by almamgr@6b9f18a04acd logInfo - Disconnect called for client
+2025-05-09T08:10:07.997 pyContainer logDelouse - Starting async activation of CONSOLE(type IDL:acsws/CONSOLE_MODULE/Console:1.0)
+2025-05-09T08:10:07.999 pyContainer logDebug - Activating CONSOLE (type IDL:acsws/CONSOLE_MODULE/Console:1.0)
+2025-05-09T08:10:08.000 pyContainer logDelouse - The container is asking the clearance to activate CONSOLE
+2025-05-09T08:10:08.000 pyContainer logDelouse - The container is not dealing with CONSOLE: the operation can go ahead
+2025-05-09T08:10:08.001 pyContainer logDelouse - The container has been cleared to activate CONSOLE
+2025-05-09T08:10:08.001 loggingts -- Successfully loaded component code. [ logName=LOG_CompAct_Loading_OK TimeMillis=0 CompName=CONSOLE ]
+2025-05-09T08:10:08.092 loggingts -- Successfully instantiated component. [ logName=LOG_CompAct_Instance_OK TimeMillis=90 CompName=CONSOLE ]
+2025-05-09T08:10:08.093 loggingts -- Successfully activated component with Corba. [ logName=LOG_CompAct_Corba_OK TimeMillis=0 CompName=CONSOLE ]
+2025-05-09T08:10:08.093 loggingts -- Successfully initialized component. [ logName=LOG_CompAct_Init_OK TimeMillis=0 CompName=CONSOLE ]
+2025-05-09T08:10:08.094 pyContainer logInfo - Activated component: CONSOLE
+2025-05-09T08:10:08.096 pyContainer logInfo - Component 'CONSOLE' has KeepAliveTime '0'.
+2025-05-09T08:10:08.098 pyContainer logDelouse - The container terminated the activation of CONSOLE: awakening waiting threads
+2025-05-09T08:10:08.099 pyContainer logDelouse - The container terminated dealing with CONSOLE
+2025-05-09T08:10:08.099 pyContainer logDelouse - Calling maci::CBComponentInfo::done with descOut.id_tag = 2 for 'CONSOLE'
+2025-05-09T08:10:08.101 pyContainer logDelouse - Call to maci::CBComponentInfo::done with descOut.id_tag = 2 for 'CONSOLE' completed
+2025-05-09T08:10:12.724 CONSOLE logDebug - Starting method: setMode
+2025-05-09T08:10:18.701 CONSOLE logDebug - Starting method: getTelescopePosition
+2025-05-09T08:10:31.231 pyContainer logDelouse - The container is asking the clearance to deactivate CONSOLE
+2025-05-09T08:10:31.232 pyContainer logDelouse - The container is not dealing with CONSOLE: the operation can go ahead
+2025-05-09T08:10:31.232 pyContainer logDelouse - The container has been cleared to activate CONSOLE
+2025-05-09T08:10:31.233 pyContainer logInfo - Deactivating component: CONSOLE
+2025-05-09T08:10:31.233 pyContainer logDelouse - The container terminated the deactivation of CONSOLE: awakening waiting threads
+2025-05-09T08:10:31.234 pyContainer logDelouse - The container terminated dealing with CONSOLE
+2025-05-09T08:10:31.824 Python Client: initialized by almamgr@6b9f18a04acd logInfo - Disconnect called for client
+2025-05-09T08:10:33.034 pyContainer logDelouse - Starting async activation of CONSOLE(type IDL:acsws/CONSOLE_MODULE/Console:1.0)
+2025-05-09T08:10:33.035 pyContainer logDebug - Activating CONSOLE (type IDL:acsws/CONSOLE_MODULE/Console:1.0)
+2025-05-09T08:10:33.036 pyContainer logDelouse - The container is asking the clearance to activate CONSOLE
+2025-05-09T08:10:33.037 pyContainer logDelouse - The container is not dealing with CONSOLE: the operation can go ahead
+2025-05-09T08:10:33.037 pyContainer logDelouse - The container has been cleared to activate CONSOLE
+2025-05-09T08:10:33.038 loggingts -- Successfully loaded component code. [ logName=LOG_CompAct_Loading_OK TimeMillis=0 CompName=CONSOLE ]
+2025-05-09T08:10:33.139 loggingts -- Successfully instantiated component. [ logName=LOG_CompAct_Instance_OK TimeMillis=101 CompName=CONSOLE ]
+2025-05-09T08:10:33.140 loggingts -- Successfully activated component with Corba. [ logName=LOG_CompAct_Corba_OK TimeMillis=0 CompName=CONSOLE ]
+2025-05-09T08:10:33.140 loggingts -- Successfully initialized component. [ logName=LOG_CompAct_Init_OK TimeMillis=0 CompName=CONSOLE ]
+2025-05-09T08:10:33.142 pyContainer logInfo - Activated component: CONSOLE
+2025-05-09T08:10:33.143 pyContainer logInfo - Component 'CONSOLE' has KeepAliveTime '0'.
+2025-05-09T08:10:33.144 pyContainer logDelouse - The container terminated the activation of CONSOLE: awakening waiting threads
+2025-05-09T08:10:33.145 pyContainer logDelouse - The container terminated dealing with CONSOLE
+2025-05-09T08:10:33.145 pyContainer logDelouse - Calling maci::CBComponentInfo::done with descOut.id_tag = 3 for 'CONSOLE'
+2025-05-09T08:10:33.147 pyContainer logDelouse - Call to maci::CBComponentInfo::done with descOut.id_tag = 3 for 'CONSOLE' completed
+2025-05-09T08:10:37.205 CONSOLE logDebug - Starting method: getTelescopePosition
+2025-05-09T08:13:40.650 CONSOLE logDebug - Starting method: getTelescopePosition
+2025-05-09T08:17:29.675 INFO [acsStartContainer] Running the container with these arguments: 'ACSStartContainerPy pyContainer -ORBendPoint giop:tcp:172.20.0.2:4000 -m corbaloc::172.20.0.2:3000/Manager'
+ContainerStatusMsg: Startup begins
+2025-05-09T08:17:29.926 AlarmSystemInterfaceFactory logDebug - Using ACS alarm system
+ContainerStatusMsg: ORB initialization begins
+ContainerStatusMsg: ORB initialization ends
+ContainerStatusMsg: Manager access initialization begins
+ContainerStatusMsg: Manager access initialization ends
+ContainerStatusMsg: Automatic component loading begins
+2025-05-09T08:17:29.941 pyContainer logInfo - Info message from the manager: Startup statistics: 0 components queued to be activated.
+2025-05-09T08:17:29.951 pyContainer logInfo - Info message from the manager: Startup statistics: 0 of 0 components activated.
+ContainerStatusMsg: Automatic component loading ends
+ContainerStatusMsg: Ready
+2025-05-09T08:17:29.994 pyContainer logAlert - The 'baci' Python script specified by this container's CDB Autoload element cannot be found!
+2025-05-09T08:17:30.021 pyContainer logInfo - Container pyContainer waiting for requests
+2025-05-09T08:17:30.023 pyContainer logInfo - Container pyContainer used libraries from /alma/ACS-2025APR/ACSSW/lib/python3.12/site-packages:
+ContainerStatusMsg: Startup ends
+2025-05-09T08:22:53.713 pyContainer logDelouse - Starting async activation of CONSOLE(type IDL:acsws/CONSOLE_MODULE/Console:1.0)
+2025-05-09T08:22:53.715 pyContainer logDebug - Activating CONSOLE (type IDL:acsws/CONSOLE_MODULE/Console:1.0)
+2025-05-09T08:22:53.715 pyContainer logDelouse - The container is asking the clearance to activate CONSOLE
+2025-05-09T08:22:53.716 pyContainer logDelouse - The container is not dealing with CONSOLE: the operation can go ahead
+2025-05-09T08:22:53.717 pyContainer logDelouse - The container has been cleared to activate CONSOLE
+2025-05-09T08:22:53.725 loggingts -- Successfully loaded component code. [ logName=LOG_CompAct_Loading_OK TimeMillis=7 CompName=CONSOLE ]
+2025-05-09T08:22:53.943 loggingts -- Successfully instantiated component. [ logName=LOG_CompAct_Instance_OK TimeMillis=217 CompName=CONSOLE ]
+2025-05-09T08:22:53.944 loggingts -- Successfully activated component with Corba. [ logName=LOG_CompAct_Corba_OK TimeMillis=0 CompName=CONSOLE ]
+2025-05-09T08:22:53.944 loggingts -- Successfully initialized component. [ logName=LOG_CompAct_Init_OK TimeMillis=0 CompName=CONSOLE ]
+2025-05-09T08:22:53.945 pyContainer logInfo - Activated component: CONSOLE
+2025-05-09T08:22:53.952 pyContainer logInfo - Component 'CONSOLE' has KeepAliveTime '0'.
+2025-05-09T08:22:53.955 pyContainer logDelouse - The container terminated the activation of CONSOLE: awakening waiting threads
+2025-05-09T08:22:53.956 pyContainer logDelouse - The container terminated dealing with CONSOLE
+2025-05-09T08:22:53.957 pyContainer logDelouse - Calling maci::CBComponentInfo::done with descOut.id_tag = 1 for 'CONSOLE'
+2025-05-09T08:22:53.958 pyContainer logDelouse - Call to maci::CBComponentInfo::done with descOut.id_tag = 1 for 'CONSOLE' completed
+2025-05-09T08:23:03.791 CONSOLE logDebug - Starting method: getTelescopePosition
