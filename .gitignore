@@ -3,3 +3,4 @@ ICD/*
 !ICD/src/Makefile
 pyConsole/*
 !pyConsole/src/
+logs/*
