@@ -79,13 +79,13 @@ class pyConsoleImpl(CONSOLE_MODULE__POA.Console, ACSComponent, ContainerServices
         self.is_camera_on = False
         self.instrument_client.cameraOff()
 
-    def getCameraImage(self, exposure_time:int):
+    def getCameraImage(self):
         self.debug("Starting method: getCameraImage")
         if self.auto_schedule:
             raise SystemInAutoModeExImpl
         if not self.is_camera_on:
             raise CameraIsOffExImpl
-        return self.instrument_client.takeImage(exposure_time)
+        return self.instrument_client.takeImage(0)
 
     def setRGB(self, rgb:RGB):
         self.debug("Starting method: setRGB")
