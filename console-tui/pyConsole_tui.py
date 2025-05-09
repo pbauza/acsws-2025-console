@@ -1,6 +1,10 @@
 import asyncio
 from Acspy.Clients.SimpleClient import PySimpleClient
 
+from matplotlib import pyplot as plt
+from PIL import Image
+import io
+
 from TYPES import Position, RGB, ImageType
 
 async def tui_console(console):
