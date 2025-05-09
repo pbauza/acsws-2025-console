@@ -29,9 +29,9 @@ class pyConsoleImpl(CONSOLE_MODULE__POA.Console, ACSComponent, ContainerServices
         self.auto_schedule = False
         self.is_camera_on = False
 
-        self.scheduler_client = self.client.getComponent("SCHEDULER")
-        self.instrument_client = self.client.getComponent("INSTRUMENT")
-        self.telescope_client = self.client.getComponent("TELESCOPE")
+        self.scheduler_client = self.client.getComponent("SCHEDULER_S")
+        self.instrument_client = self.client.getComponent("INSTRUMENT_S")
+        self.telescope_client = self.client.getComponent("TELESCOPE_S")
     
     def info(self, msg:str):
         self._logger.info(msg)
@@ -116,4 +116,4 @@ class pyConsoleImpl(CONSOLE_MODULE__POA.Console, ACSComponent, ContainerServices
 
     def getTelescopePosition(self):
         self.debug("Starting method: getTelescopePosition")
-        self.telescope_client.getCurrentPosition() # instead of getTelescopePosition
+        return self.telescope_client.getCurrentPosition() # instead of getTelescopePosition
