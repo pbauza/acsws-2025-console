@@ -96,8 +96,11 @@ def addProposals(n_proposals=1, db=None):
     """
     for i in range(n_proposals):
         print(f"Adding proposal {i+1}/{n_proposals}...")
-        target_list = generateTargets(3)
-        db.storeProposal(target_list)
+        target_list = generateTargets(n_targets=random.randint(4, 10))
+        if target_list:
+            db.storeProposal(target_list)
+        else:
+            print("No visible targets found.")
     
 def main(n_proposals=1):
     """
